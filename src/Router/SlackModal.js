@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const ModalBox = styled.dialog`
@@ -30,6 +29,12 @@ function Modal() {
     setChannels((setChannelsArray) => [channel, ...setChannelsArray]);
   };
 
+  const deleteBtn = (index) => {
+    setChannels(
+      chaneels.filter((item, chaneelsIndex) => index !== chaneelsIndex)
+    );
+  };
+
   const openModal = () => {
     setIsOpen(true);
   };
@@ -43,7 +48,8 @@ function Modal() {
       <ul>
         {chaneels.map((data, index) => (
           <Messge key={index}>
-            <Link to={`/${data}`}># {data}</Link>
+            # {data}
+            <button onClick={() => deleteBtn(index)}>삭제하기</button>
           </Messge>
         ))}
       </ul>
